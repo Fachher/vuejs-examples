@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event handling</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="eventhandling.js"></script>
+</head>
+<body>
+<div id="example1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</div>
+
+<div id="example2">
+    <button v-on:click="greet">Greet</button>
+</div>
+
+<div id="example3">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+</div>
+
+<div id="example4">
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+        Submit
+    </button>
+</div>
+
+<div id="example5">
+    <!-- event modifiers -->
+
+    <!-- the click event's propagation will be stopped -->
+    <a v-on:click.stop="doThis"></a>
+    <!-- the submit event will no longer reload the page -->
+    <form v-on:submit.prevent="onSubmit"></form>
+    <!-- modifiers can be chained -->
+    <a v-on:click.stop.prevent="doThat"></a>
+    <!-- just the modifier -->
+    <form v-on:submit.prevent></form>
+    <!-- use capture mode when adding the event listener -->
+    <!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+    <div v-on:click.capture="doThis">...</div>
+    <!-- only trigger handler if event.target is the element itself -->
+    <!-- i.e. not from a child element -->
+    <div v-on:click.self="doThat">...</div>
+</div>
+
+<div id="example6">
+    <input v-on:keyup.13="submit">
+    <input v-on:keyup.enter="submit">
+    <input @keyup.enter="submit">
+
+    <!-- Vue.config.keyCodes.f1 = 112 -->
+</div>
+
+<!--
+
+Why Listeners in HTML?
+
+You might be concerned that this whole event listening approach violates the good old rules about “separation of concerns”. Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that’s handling the current view, it won’t cause any maintenance difficulty. In fact, there are several benefits in using v-on:
+It’s easier to locate the handler function implementations within your JS code by skimming the HTML template.
+Since you don’t have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
+When a ViewModel is destroyed, all event listeners are automatically removed. You don’t need to worry about cleaning it up yourself.
+
+-->
+
+
+
+</body>
+</html>

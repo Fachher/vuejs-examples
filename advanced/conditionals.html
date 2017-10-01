@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conditionals</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="conditionals.js"></script>
+</head>
+<body>
+
+<div id="example1">
+    <h1 v-if="show">Yes</h1>
+    <h1 v-else>No</h1>
+</div>
+
+<div id="example2">
+    <template v-if="show">
+        <h1>Show multiple elements</h1>
+        <p>This is the first element</p>
+        <p>This is the second element</p>
+    </template>
+</div>
+
+<div id="example3">
+    <!-- VueJS reuses elements -->
+    <template v-if="show">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+        <!--<input placeholder="Enter your username" key="username-input">-->
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+        <!--<input placeholder="Enter your email address" key="email-input">-->
+    </template>
+</div>
+
+<div id="example4">
+    <h1 v-show="show">
+        DOM element is kept in DOM. (visible: false)
+    </h1>
+</div>
+
+
+
+
+
+</body>
+</html>

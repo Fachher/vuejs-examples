@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterations</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="iteration.js"></script>
+</head>
+<body>
+
+<ul id="example1">
+   <li v-for="item in items">
+       {{item.message}}
+   </li>
+</ul>
+
+<ul id="example2">
+    <li v-for="(item, index) in items">
+        {{ parentData }} - {{index}} - {{item.message}}
+    </li>
+</ul>
+
+<ul id="example3">
+    <li v-for="(value, key, index) in human">
+        {{index}}. {{ key }} : {{ value }}
+    </li>
+</ul>
+
+
+<!-- Becareful in place-patch -->
+<!-- + array mutation detection push, pop, shift, unshift, splice, sort, reverse -->
+<div id="example4">
+    <div v-for="item in items" :key="item.id">
+        {{ item.name }}
+    </div>
+</div>
+
+<!-- Non mutating operations filter, concat and slice (heuristic is been used for performance, nothing will be thrown away)-->
+<div id="example5">
+    <div v-for="item in items" :key="item.id">
+        {{ item.name }}
+    </div>
+</div>
+
+<!-- Caveats (no changes will be detected if you set the item via index  example5.items[3] = {id:3, name:'asdf'}-->
+<!-- instead use Vue.set(example1.items, indexOfItem, newValue) and example1.items.splice(indexOfItem, 1, newValue) -->
+<!-- Do not add properties to example.data in addition you don't get reactivity.
+      If unavoidable Vue.set(vm.userProfile, 'age', 27) or this.$set(this.userProfile, 'age', 27) -->
+
+<div id="example6">
+    <div v-for="number in evenNumbers">
+        {{ number }}
+    </div>
+</div>
+
+<!-- !!! Precedents of v-if is lower then v-for -->
+<div id="example7">
+    <ul>
+        <li v-for="todo in todos" v-if="!todo.isComplete">
+            {{ todo.name }}
+        </li>
+    </ul>
+</div>
+
+<div id="example8">
+    <!-- components have isolated scopes of their own -->
+    <my-component
+            v-for="(item, index) in items"
+            v-bind:item="item"
+            v-bind:index="index"
+            v-bind:key="item.id"
+    ></my-component>
+</div>
+
+
+<div id="example9">
+    <input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo">
+    <ul>
+        <!-- See DOM Template Parsing Caveats -->
+        <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
+    </ul>
+</div>
+
+</body>
+</html>

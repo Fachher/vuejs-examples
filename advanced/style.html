@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="style.js"></script>
+</head>
+<body>
+<div id="app1" class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+    Hello World
+</div>
+
+<div id="example2" v-bind:class="[classObject, errorClass]">
+    Multiple classes
+</div>
+
+<!-- conditional switching -->
+<div id="example3" v-bind:class="[isActive ? activeClass : errorClass, anyOtherClass]">
+    Conditional switching
+</div>
+
+<my-component></my-component>
+
+</body>
+</html>

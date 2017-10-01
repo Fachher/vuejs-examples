@@ -1,0 +1,62 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="node_modules/vue/dist/vue.js"></script>
+		<script src="main.js"></script>
+
+		<!-- todo add namespace/schema for vuejs -->
+	</head>
+	<body>
+		<!--Declarative rendering (reactive changing)-->
+		<div id="app">
+			<p>{{ message }}</p>
+		</div>
+
+		<div id="app-2">
+			<span v-bind:title="message">
+				Hover your mouse over me for a few seconds
+				to see my dynamically bound title!
+			</span>
+		</div>
+
+		<!--Conditionals-->
+
+		<div id="app-3">
+			<p v-if="seen">Now you see me</p>
+		</div>
+
+		<!--Loops-->
+
+		<div id="app-4">
+			<ol>
+				<li v-for="todo in todos">
+					{{ todo.text }}
+				</li>
+			</ol>
+		</div>
+
+		<!--Handling User Input-->
+		<div id="app-5">
+			<p>{{ message }}</p>
+			<button v-on:click="reverseMessage">Reverse Message</button>
+		</div>
+
+		<!--two way binding-->
+		<div id="app-6">
+			<p>{{ message }}</p>
+			<input v-model="message">
+		</div>
+
+		<!--composing with components-->
+		<div id="app-7">
+			<ol>
+				<todo-item
+						v-for="item in groceryList"
+						v-bind:todo="item"
+						v-bind:key="item.id">
+				</todo-item>
+			</ol>
+		</div>
+
+	</body>
+</html>

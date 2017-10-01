@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Composing Components</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="composing.js"></script>
+</head>
+<body>
+
+<!-- it is also very important to keep the parent and the child as decoupled as possible via a clearly-defined interface -->
+
+<!--Every component instance has its own isolated scope -->
+
+<!-- parent pass data down to the child using props -->
+
+
+<div id="example1">
+    <h4>props down, events up</h4>
+    <!-- !!! attention when using Camelcase. (Kebab-case)-->
+    <child my-message="hello!"></child>
+    <hr>
+</div>
+
+<div id="example2">
+    <div>
+        <input v-model="parentMsg">
+        <br>
+        <child v-bind:my-message="parentMsg"></child>
+        <!-- provide all properties by leaving out :my-message -->
+    </div>
+    <hr>
+</div>
+
+<div id="example3">
+    <h4>Add attribute to template, add class and change type</h4>
+    <bs-date-input data-3d-date-picker="true" type="large"></bs-date-input>
+    <bs-date-input data-3d-date-picker="true" class="anyclass"></bs-date-input>
+    <hr>
+</div>
+
+<!-- Note vuejs has its own event system beside EventTarget API  https://developer.mozilla.org/en-US/docs/Web/API/EventTarget-->
+<div id="example4">
+    <h4>Events emitting</h4>
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <hr>
+</div>
+
+<div id="example5">
+    <h4>React to native events</h4>
+    <my-component v-on:click.native="doTheThing"></my-component>
+    <hr>
+</div>
+
+<div id="example6">
+    <h4>Form input components using custom events</h4>
+    <currency-input v-model="price"></currency-input>
+    <p>{{ price }}</p>
+    <hr>
+    <!--
+    So for a component to work with v-model, it should (these can be configured in 2.2.0+):
+        accept a value prop
+        emit an input event with the new value
+    -->
+</div>
+
+<div id="example7">
+    <h4>Customizing Component</h4>
+    <my-checkbox v-model="state" value="some value"></my-checkbox>
+    <p>{{ state }}</p>
+</div>
+
+<!-- What is the difference between props and data -->
+
+<div id="example8">
+    <h4>Non parent-child communication</h4>
+    <component-one></component-one>
+    <component-two></component-two>
+</div>
+
+<!-- https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots -->
+
+
+
+</body>
+</html>

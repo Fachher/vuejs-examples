@@ -1,0 +1,32 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="node_modules/vue/dist/vue.js"></script>
+		<script src="main.js"></script>
+	</head>
+	<body>
+
+		<!--
+		provide link to declaration overview
+		@ v-once
+		@ v-html="anyVar"
+		@
+		-->
+
+		<h1 style="text-align: center">VueJS advanced tutorial</h1>
+
+		<div id="app1">{{ 1 + 2 }}</div>
+
+		<div id="app2" v-once>{{name}}</div>
+
+		<div v-bind:id="dynamicId">Hello</div>
+
+		<button id="button1" v-if="isVisible" v-on:click="sayHello">{{ message }}</button>
+
+		<!--Listen for DOM events-->
+		<!--<a v-on:click="doSomething"></a>-->
+
+		<!--<form v-on:submit.prevent="onSubmit"></form>-->
+
+	</body>
+</html>

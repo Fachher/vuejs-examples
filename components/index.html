@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Components</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+
+<div id="example1">
+    <global-component></global-component>
+    <!--<local-component>Won't get rendered</local-component>-->
+</div>
+<hr>
+<div id="example2">
+    <global-component></global-component>
+    <local-component></local-component>
+</div>
+<hr>
+<!-- Element hoisting-->
+<div id="example3">
+    <table>
+        <!--<my-row>...</my-row>-->
+        <tr is="my-row"></tr>
+    </table>
+</div>
+<hr>
+<div id="example4">
+    <another-global-component></another-global-component>
+</div>
+<hr>
+<div id="example5">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+</div>
+
+
+
+</body>
+</html>
