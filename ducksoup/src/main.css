@@ -1,0 +1,25 @@
+body{
+  background-color: #4b4b9a
+}
+h1{
+  color: white;
+}
+.dashboard-widget {
+  background-color: white
+}
+.dashboard-widget h4{
+  color: black;
+  margin: 10px 0 2px 0
+}
+.dashboard-widget ul{
+  list-style-type: none;
+}
+.dashboard-widget ul li *{
+  padding: 0 5px 0 5px
+}
+.dashboard-widget ul ul{
+  display: inline-block;
+}
+a {
+  color: #0091ff;
+}

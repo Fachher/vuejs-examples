@@ -2,9 +2,10 @@
 
 import Component from 'vue-class-component';
 import Vue from 'vue';
-import {Prop, Provide} from 'vue-property-decorator';
+import {Prop} from 'vue-property-decorator';
 import axios, {AxiosResponse} from 'axios';
 import {Logger} from '../../util/log';
+import {ListEntry} from './listEntry';
 
 interface PhotoResponse {
   id: string;
@@ -14,8 +15,16 @@ interface PhotoResponse {
   thumbnailUrl: string;
 }
 
+Vue.filter('limit', function(array, length) {
+  let limitCount = parseInt(length, 10);
+  return array.slice(0, limitCount);
+});
+
 @Component({
   template: require('./widget.html'),
+  components: {
+    'listEntry': ListEntry
+  }
 })
 export class WidgetComponent extends Vue {
 
@@ -32,21 +41,6 @@ export class WidgetComponent extends Vue {
     super();
     this.axios = axios;
     if (!this.logger) this.logger = new Logger();
-  }
-
-
-  // @Model('input')
-  // myinput: string;
-
-  data () {
-    return {
-      myinput: ''
-    };
-  }
-
-  greet () {
-    alert('Hello');
-    this.$emit('greetParent');
   }
 
   get anyComputedValue(){

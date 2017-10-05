@@ -3,25 +3,6 @@ import Component from 'vue-class-component';
 import {Logger} from '../../util/log';
 import {WidgetComponent} from '../widget/widget';
 
-// Nice to know
-interface VuejsLifecycleHooks {
-  beforeCreate();
-
-  created();
-
-  beforeMount();
-
-  mounted();
-
-  beforeUpdate();
-
-  updated();
-
-  beforeDestroy();
-
-  destroyed();
-}
-
 // https://vuejs.org/v2/api/
 
 @Component({
@@ -49,4 +30,23 @@ export class DashboardComponent extends Vue {
     alert('Hello Child');
   }
 
+}
+
+// Nice to know
+interface VuejsLifecycleHooks {
+  beforeCreate();
+
+  created();
+
+  beforeMount();
+
+  mounted();
+
+  beforeUpdate();
+
+  updated();
+
+  beforeDestroy();
+
+  destroyed();
 }

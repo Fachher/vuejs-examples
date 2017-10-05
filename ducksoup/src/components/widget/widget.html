@@ -1,21 +1,34 @@
-<div>
+<div class="col-lg-6 dashboard-widget">
+  <h4>Follow shipment</h4>
 
-  <div>  Url: {{ url }}</div>
-
-  <button @click="greet">Greet</button>
-
-  <!--<button @click="informParent">Inform parent</button>-->
-
-  <div>{{ anyComputedValue }}</div>
-
-  <input v-model="myinput">
-
-  <div> {{ myinput }}</div>
-
-  <h4>Ajax request example</h4>
-  <ul>
-    <li v-for="item in items">{{item.title}}</li>
+  <ul style="padding: 0 0 0 0;">
+    <list-entry v-for="item in items" :key="item.id" :thumbnailUrl="item.thumbnailUrl"></list-entry>
   </ul>
-
-
 </div>
+
+
+<!--<div>§-->
+
+<!--<div>  Url: {{ url }}</div>-->
+
+<!--<button @click="greet">Greet</button>-->
+
+<!--&lt;!&ndash;<button @click="informParent">Inform parent</button>&ndash;&gt;-->
+
+<!--<div>{{ anyComputedValue }}</div>-->
+
+<!--<input v-model="myinput">-->
+
+<!--<div> {{ myinput }}</div>-->
+
+<!--<h4>Ajax request example</h4>-->
+
+<!--<ul>-->
+<!--<li v-for="item in items" :key="item.id">{{item.title}}</li>-->
+<!--</ul>-->
+
+
+<!--</div>-->
+
+
+

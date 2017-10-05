@@ -1,7 +1,10 @@
-<div>
-  <p>Running in {{ mode }}</p>
+
+<div class="container">
   <a class="repo-link" v-bind:href="repo">Visco Repo</a>
-
-  <widget url="https://jsonplaceholder.typicode.com/photos" v-on:greetParent="greetBack">  </widget>
-
+  <p>Running in {{ mode }}</p>
+  <h1 style="text-align: center">Dashboard</h1>
+  <div class="row">
+    <widget url="https://jsonplaceholder.typicode.com/photos" v-on:greetParent="greetBack"></widget>
+  </div>
 </div>
+
