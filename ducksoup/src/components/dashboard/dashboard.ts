@@ -41,6 +41,11 @@ export class DashboardComponent extends Vue {
     if (!this.logger) this.logger = new Logger();
   }
 
+  // public methods
+  greetBack() {
+    alert('Hello Child');
+  }
+
   // LIFECYCLE HOOKS
   beforeCreate() {
     if (!this.logger) this.logger = new Logger();

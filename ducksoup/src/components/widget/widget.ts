@@ -23,6 +23,7 @@ export class WidgetComponent extends Vue {
 
   greet () {
     alert('Hello');
+    this.$emit('greetParent');
   }
 
   get anyComputedValue(){
